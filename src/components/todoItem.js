@@ -48,7 +48,7 @@ const TodoItem = ({ item }) => {
 
   return (
     <div>
-      <div>
+      <div className="item">
         {changeItem()}
         <input type="checkbox" checked={item.isComplete} onChange={complete} />
         <button onClick={trueOrFalse}>{editItem ? "set" : "edit"}</button>

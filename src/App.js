@@ -8,7 +8,10 @@ function App() {
     <div className="App">
       <h1>Todo List</h1>
       <TodoAdd />
-      <TodoList />
+      <div>
+        <h2>Todos</h2>
+        <TodoList />
+      </div>
     </div>
   );
 }
