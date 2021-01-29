@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import itemArr from "../recoil/atom";
 
 const TodoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(itemArr);
+  const [editItem, setItem] = useState(false);
   const theItem = todoList.findIndex((list) => list === item);
 
   const editItemText = ({ target: { value } }) => {
@@ -13,6 +14,21 @@ const TodoItem = ({ item }) => {
     });
 
     setTodoList(newList);
+  };
+
+  const trueOrFalse = () => {
+    if (!editItem) {
+      setItem(true);
+    } else {
+      setItem(false);
+    }
+  };
+  const changeItem = () => {
+    return editItem ? (
+      <input type="text" value={item.txt} onChange={editItemText} />
+    ) : (
+      <p>{item.txt}</p>
+    );
   };
 
   const complete = () => {
@@ -32,9 +48,12 @@ const TodoItem = ({ item }) => {
 
   return (
     <div>
-      <input type="text" value={item.txt} onChange={editItemText} />
-      <input type="checkbox" checked={item.isComplete} onChange={complete} />
-      <button onClick={deleteItem}>Delete</button>
+      <div>
+        {changeItem()}
+        <input type="checkbox" checked={item.isComplete} onChange={complete} />
+        <button onClick={trueOrFalse}>{editItem ? "set" : "edit"}</button>
+        <button onClick={deleteItem}>Delete</button>
+      </div>
     </div>
   );
 
