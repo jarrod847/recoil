@@ -9,7 +9,7 @@ const TodoItem = ({ item }) => {
   const editItemText = ({ target: { value } }) => {
     const newList = replaceItem(todoList, theItem, {
       ...item,
-      text: value,
+      txt: value,
     });
 
     setTodoList(newList);
@@ -32,7 +32,7 @@ const TodoItem = ({ item }) => {
 
   return (
     <div>
-      <input type="text" value={item.text} onChange={editItemText} />
+      <input type="text" value={item.txt} onChange={editItemText} />
       <input type="checkbox" checked={item.isComplete} onChange={complete} />
       <button onClick={deleteItem}>Delete</button>
     </div>
