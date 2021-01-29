@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import itemArr from "../recoil/atom";
-import { getDiffieHellman } from "crypto";
 
 const TodoAdd = () => {
   const [newValue, setNewValue] = useState("");
@@ -13,6 +12,7 @@ const TodoAdd = () => {
       {
         id: getId(),
         txt: newValue,
+        isComplete: false,
       },
     ]);
     setNewValue("");

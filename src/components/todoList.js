@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import itemArr from "../recoil/atom";
 import Todo from "./todo";
+import TodoItem from "./todoItem";
 
 const TodoList = () => {
   const todoList = useRecoilValue(itemArr);
@@ -9,7 +10,7 @@ const TodoList = () => {
   return (
     <div>
       {todoList.map((item) => (
-        <Todo key={item.id} item={item} />
+        <TodoItem key={item.id} item={item} />
       ))}
     </div>
   );
