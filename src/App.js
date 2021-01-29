@@ -13,6 +13,4 @@ function App() {
   );
 }
 
-// https://recoiljs.org/docs/basic-tutorial/atoms
-
 export default App;
