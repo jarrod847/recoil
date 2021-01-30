@@ -1,16 +1,23 @@
-const filteredTodoListState = selector({
-  key: "filteredTodoListState",
+import itemArr from "./atom";
+import filteredState from "./todoFilter";
+
+const { selector } = require("recoil");
+
+const filteredTodo = selector({
+  key: "filteredTodo",
   get: ({ get }) => {
-    const filter = get(todoListFilterState);
-    const list = get(todoListState);
+    const filter = get(filteredState);
+    const list = get(itemArr);
 
     switch (filter) {
-      case "Show Completed":
+      case "Completed":
         return list.filter((item) => item.isComplete);
-      case "Show Uncompleted":
+      case "Uncompleted":
         return list.filter((item) => !item.isComplete);
       default:
         return list;
     }
   },
 });
+
+export default filteredTodo;
